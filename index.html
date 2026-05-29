@@ -873,7 +873,25 @@ footer {
 function toggleExpand(el) {
   el.classList.toggle('expanded');
 }
+function toggleExpand(el) {
+  el.classList.toggle('expanded');
+}
 
+function toggleAudio(card) {
+  var audio = card.querySelector('audio');
+  var btn = card.querySelector('.play-btn svg');
+  if (audio.paused) {
+    audio.play();
+    btn.innerHTML = '<rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/>';
+    card.classList.add('playing');
+  } else {
+    audio.pause();
+    btn.innerHTML = '<polygon points="6,3 20,12 6,21"/>';
+    card.classList.remove('playing');
+  }
+}
+
+let currentCard = null;
 let currentCard = null;
 let isPlaying = false;
 let progressInterval = null;

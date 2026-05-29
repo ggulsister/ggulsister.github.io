@@ -636,18 +636,30 @@ footer {
       </div>
     </div>
 
-    <div class="music-card" data-title="너와 나의 5분 OST" data-sub="영화 음악 · 작곡 참여" onclick="togglePlay(this)">
-      <div class="play-btn">
-        <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+    <div class="music-card-expandable">
+      <div class="music-card" onclick="toggleExpand(this.parentElement)" style="cursor:pointer;">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24" class="expand-arrow" style="margin-left:0;transition:transform 0.3s;"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="music-info">
+          <div class="music-category">Film · 2024</div>
+          <div class="music-title">너와 나의 5분 OST</div>
+          <div class="music-desc">영화 음악 · 작곡 참여 · 2 Tracks</div>
+        </div>
+        <div class="music-meta">
+          <div class="music-year">2024</div>
+          <div class="music-type">Film Score</div>
+        </div>
       </div>
-      <div class="music-info">
-        <div class="music-category">Film · 2024</div>
-        <div class="music-title">너와 나의 5분 OST</div>
-        <div class="music-desc">영화 음악 · 작곡 참여</div>
-      </div>
-      <div class="music-meta">
-        <div class="music-year">2024</div>
-        <div class="music-type">Film Score</div>
+      <div class="expand-panel">
+        <div class="embed-track">
+          <div class="embed-label">Track 01</div>
+          <audio controls preload="none" style="width:100%;"><source src="5min1.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="embed-track">
+          <div class="embed-label">Track 02</div>
+          <audio controls preload="none" style="width:100%;"><source src="5min2.mp3" type="audio/mpeg"></audio>
+        </div>
       </div>
     </div>
 
@@ -690,7 +702,7 @@ footer {
   </div>
   <div class="music-grid">
 
-    <div class="music-card" data-title="Call-Up" data-sub="개인 싱글앨범 · 작곡, 편곡, 연주, 프로듀싱" onclick="togglePlay(this)" style="border-color: var(--accent-subtle); background: linear-gradient(135deg, var(--surface) 0%, var(--accent-subtle) 100%);">
+    <div class="music-card" onclick="toggleAudio(this)" style="cursor:pointer; border-color: var(--accent-subtle); background: linear-gradient(135deg, var(--surface) 0%, var(--accent-subtle) 100%);">
       <div class="play-btn">
         <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
       </div>
@@ -703,6 +715,7 @@ footer {
         <div class="music-year"></div>
         <div class="music-type">Single Album</div>
       </div>
+      <audio preload="none"><source src="callup.mp3" type="audio/mpeg"></audio>
     </div>
 
     <div class="music-card" data-title="눈빛" data-sub="싱어송라이터 미래 · 편곡 & 건반 연주" onclick="togglePlay(this)">

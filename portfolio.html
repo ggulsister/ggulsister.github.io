@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>최윤정 — Composer · Jazz Pianist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+KR:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #FAFAF8;
+  --surface: #FFFFFF;
+  --text: #1A1A1A;
+  --text-secondary: #6B6B6B;
+  --text-tertiary: #9A9A9A;
+  --accent: #2C4A3E;
+  --accent-light: #3D6B5A;
+  --accent-subtle: #E8F0EC;
+  --border: #E8E6E3;
+  --border-light: #F0EEEB;
+  --warm: #F5F3F0;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.08);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(250, 250, 248, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+}
+nav .nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 16px 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+nav .logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300; font-size: 20px;
+  letter-spacing: 0.02em; color: var(--text);
+  text-decoration: none;
+}
+nav .logo em {
+  font-style: italic; color: var(--accent);
+}
+nav ul {
+  list-style: none; display: flex; gap: 32px;
+}
+nav a {
+  text-decoration: none; color: var(--text-secondary);
+  font-size: 13px; font-weight: 400; letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+nav a:hover { color: var(--accent); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 120px 32px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -30%; right: -15%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--accent-subtle) 0%, transparent 70%);
+  opacity: 0.6;
+  animation: float 20s ease-in-out infinite;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -20%; left: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #F0EDE8 0%, transparent 70%);
+  opacity: 0.5;
+  animation: float 25s ease-in-out infinite reverse;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, -30px); }
+}
+.hero-content {
+  position: relative; z-index: 1;
+  text-align: center;
+  animation: fadeUp 1s ease-out;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-label {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 24px;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+}
+.hero-label::before, .hero-label::after {
+  content: ''; width: 32px; height: 1px;
+  background: var(--accent); opacity: 0.4;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300; font-size: clamp(48px, 8vw, 88px);
+  line-height: 1.1; margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+.hero h1 em {
+  font-style: italic; color: var(--accent);
+}
+.hero-sub {
+  font-size: 16px; font-weight: 300;
+  color: var(--text-secondary); max-width: 500px;
+  margin: 0 auto 40px; line-height: 1.8;
+}
+.hero-tags {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+}
+.hero-tags span {
+  padding: 6px 16px; border-radius: 20px;
+  font-size: 12px; font-weight: 400;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+/* ─── SECTIONS ─── */
+section {
+  max-width: 1100px; margin: 0 auto;
+  padding: 100px 32px;
+}
+.section-header {
+  margin-bottom: 56px;
+  animation: fadeUp 0.6s ease-out;
+}
+.section-label {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300; font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.2; letter-spacing: -0.01em;
+}
+
+/* ─── MUSIC PLAYER CARDS ─── */
+.music-grid {
+  display: grid; gap: 20px;
+}
+.music-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center; gap: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.music-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: var(--accent);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+.music-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-subtle);
+  transform: translateY(-2px);
+}
+.music-card:hover::before { transform: scaleY(1); }
+
+.play-btn {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--accent-subtle);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+.play-btn svg {
+  width: 20px; height: 20px;
+  fill: var(--accent);
+  margin-left: 2px;
+  transition: all 0.2s;
+}
+.music-card:hover .play-btn {
+  background: var(--accent);
+}
+.music-card:hover .play-btn svg { fill: white; }
+.music-card.playing .play-btn {
+  background: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+.music-card.playing .play-btn svg { fill: white; }
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(44, 74, 62, 0.3); }
+  50% { box-shadow: 0 0 0 10px rgba(44, 74, 62, 0); }
+}
+
+.music-info { min-width: 0; }
+.music-category {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 4px;
+}
+.music-title {
+  font-size: 17px; font-weight: 400;
+  margin-bottom: 4px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.music-desc {
+  font-size: 13px; color: var(--text-tertiary);
+  font-weight: 300;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.music-meta {
+  text-align: right; flex-shrink: 0;
+}
+.music-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 300;
+  color: var(--border); line-height: 1;
+}
+.music-type {
+  font-size: 11px; color: var(--text-tertiary);
+  margin-top: 4px;
+}
+
+/* ─── EXPANDABLE CARD (ACCORDION) ─── */
+.music-card-expandable {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: all 0.3s ease;
+}
+.music-card-expandable:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-subtle);
+}
+.music-card-expandable .music-card {
+  border: none; border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+}
+.music-card-expandable .music-card:hover {
+  box-shadow: none; transform: none;
+}
+.music-card-expandable .music-card::before { display: none; }
+.music-card-expandable.expanded {
+  border-color: var(--accent-subtle);
+  box-shadow: var(--shadow-lg);
+}
+.music-card-expandable.expanded .expand-arrow {
+  transform: rotate(180deg);
+}
+.expand-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--warm);
+  border-top: 0px solid var(--border-light);
+}
+.music-card-expandable.expanded .expand-panel {
+  max-height: 2000px;
+  border-top-width: 1px;
+}
+.expand-arrow {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.embed-track {
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--border-light);
+}
+.embed-track:last-child { border-bottom: none; }
+.embed-label {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 12px;
+}
+.embed-track audio {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  outline: none;
+}
+
+/* ─── AUDIO PLAYER BAR ─── */
+.audio-player-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 16px 32px;
+  display: flex; align-items: center; gap: 20px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 200;
+}
+.audio-player-bar.visible { transform: translateY(0); }
+.player-info { flex: 1; min-width: 0; }
+.player-title { font-size: 14px; font-weight: 400; }
+.player-sub { font-size: 12px; color: var(--text-tertiary); }
+.player-controls {
+  display: flex; align-items: center; gap: 16px;
+}
+.player-btn {
+  width: 40px; height: 40px;
+  border-radius: 50%; border: none;
+  background: var(--accent); color: white;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.2s;
+}
+.player-btn:hover { background: var(--accent-light); transform: scale(1.05); }
+.player-btn svg { width: 16px; height: 16px; fill: white; margin-left: 1px; }
+.progress-bar {
+  flex: 2; height: 4px;
+  background: var(--border);
+  border-radius: 2px; overflow: hidden;
+  cursor: pointer;
+}
+.progress-fill {
+  height: 100%; width: 0%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+.player-time {
+  font-size: 12px; color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+  min-width: 40px;
+}
+.player-close {
+  background: none; border: none;
+  color: var(--text-tertiary); cursor: pointer;
+  font-size: 20px; padding: 4px;
+  transition: color 0.2s;
+}
+.player-close:hover { color: var(--text); }
+
+/* ─── FILMOGRAPHY ─── */
+.film-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+.film-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 24px 28px;
+  transition: all 0.3s ease;
+}
+.film-card:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--accent-subtle);
+}
+.film-type {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 8px;
+}
+.film-name {
+  font-size: 16px; font-weight: 400; margin-bottom: 4px;
+}
+.film-detail {
+  font-size: 13px; color: var(--text-tertiary); font-weight: 300;
+}
+
+/* ─── ABOUT ─── */
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: start;
+}
+.about-text p {
+  font-size: 15px; line-height: 1.9;
+  color: var(--text-secondary); margin-bottom: 20px;
+}
+.about-stats {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+}
+.stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; font-weight: 300;
+  color: var(--accent); line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 12px; color: var(--text-tertiary);
+  font-weight: 400;
+}
+
+/* ─── CONTACT ─── */
+.contact-section {
+  text-align: center;
+  padding: 120px 32px;
+  background: var(--warm);
+  border-top: 1px solid var(--border-light);
+}
+.contact-section .section-header { margin-bottom: 32px; }
+.contact-desc {
+  font-size: 15px; color: var(--text-secondary);
+  max-width: 460px; margin: 0 auto 40px;
+  line-height: 1.8;
+}
+.contact-email {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 300; font-style: italic;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-subtle);
+  padding-bottom: 4px;
+  transition: all 0.3s;
+}
+.contact-email:hover {
+  border-color: var(--accent);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  text-align: center; padding: 32px;
+  font-size: 12px; color: var(--text-tertiary);
+  background: var(--warm);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  nav ul { display: none; }
+  .music-card { grid-template-columns: 44px 1fr; gap: 14px; padding: 20px; }
+  .music-meta { display: none; }
+  .play-btn { width: 44px; height: 44px; }
+  .about-content { grid-template-columns: 1fr; gap: 40px; }
+  .film-grid { grid-template-columns: 1fr; }
+  section { padding: 60px 20px; }
+  .audio-player-bar { padding: 12px 16px; gap: 12px; }
+  .progress-bar { display: none; }
+  .player-time { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Yun Jeong <em>Choi</em></a>
+    <ul>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#filmography">Filmography</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Composer · Jazz Pianist</div>
+    <h1>최윤정<br><em>Choi Yun Jeong</em></h1>
+    <p class="hero-sub">
+      화면 위에 선율을 입히는 사람.<br>
+      영상의 감정을 음악으로 설계합니다.
+    </p>
+    <div class="hero-tags">
+      <span>Film Score</span>
+      <span>Jazz Piano</span>
+      <span>Arrangement</span>
+      <span>MIDI Production</span>
+    </div>
+  </div>
+</section>
+
+<!-- MUSIC PORTFOLIO -->
+<section id="music">
+  <div class="section-header">
+    <div class="section-label">Portfolio</div>
+    <div class="section-title">Music</div>
+  </div>
+  <!-- ── 음악감독 작품 ── -->
+  <div style="margin-bottom: 12px;">
+    <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);">Music Director</span>
+  </div>
+  <div class="music-grid" style="margin-bottom: 48px;">
+
+    <div class="music-card" data-title="금순 OST" data-sub="단편영화 · 음악감독" onclick="togglePlay(this)" style="border-color: var(--accent-subtle); background: linear-gradient(135deg, var(--surface) 0%, var(--accent-subtle) 100%);">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+      </div>
+      <div class="music-info">
+        <div class="music-category">Music Director</div>
+        <div class="music-title">금순</div>
+        <div class="music-desc">단편영화 · 음악감독</div>
+      </div>
+      <div class="music-meta">
+        <div class="music-year">2025</div>
+        <div class="music-type">Short Film</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── 음악 스탭 참여작 ── -->
+  <div style="margin-bottom: 12px;">
+    <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);">Music Staff · 작곡 참여</span>
+  </div>
+  <div class="music-grid" style="margin-bottom: 48px;">
+
+    <div class="music-card-expandable">
+      <div class="music-card" onclick="toggleExpand(this.parentElement)" style="cursor:pointer;">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24" class="expand-arrow" style="margin-left:0;transition:transform 0.3s;"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="music-info">
+          <div class="music-category">Drama · 2025</div>
+          <div class="music-title">비밀사이 OST</div>
+          <div class="music-desc">왓챠 / 후지TV · 드라마 음악 작곡 · 5 Tracks</div>
+        </div>
+        <div class="music-meta">
+          <div class="music-year">2025</div>
+          <div class="music-type">Drama OST</div>
+        </div>
+      </div>
+      <div class="expand-panel">
+        <div class="embed-track">
+          <div class="embed-label">Track 01</div>
+          <audio controls preload="none" style="width:100%;"><source src="secret1.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="embed-track">
+          <div class="embed-label">Track 02</div>
+          <audio controls preload="none" style="width:100%;"><source src="secret2.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="embed-track">
+          <div class="embed-label">Track 03</div>
+          <audio controls preload="none" style="width:100%;"><source src="secret3.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="embed-track">
+          <div class="embed-label">Track 04</div>
+          <audio controls preload="none" style="width:100%;"><source src="secret4.mp3" type="audio/mpeg"></audio>
+        </div>
+        <div class="embed-track">
+          <div class="embed-label">Track 05</div>
+          <audio controls preload="none" style="width:100%;"><source src="secret5.mp3" type="audio/mpeg"></audio>
+        </div>
+      </div>
+    </div>
+
+    <div class="music-card" data-title="맹감독의 악플러 OST" data-sub="MBC · 드라마 음악 작곡" onclick="togglePlay(this)">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+      </div>
+      <div class="music-info">
+        <div class="music-category">Drama · 2025</div>
+        <div class="music-title">맹감독의 악플러 OST</div>
+        <div class="music-desc">MBC · 드라마 음악 작곡</div>
+      </div>
+      <div class="music-meta">
+        <div class="music-year">2025</div>
+        <div class="music-type">Drama OST</div>
+      </div>
+    </div>
+
+    <div class="music-card" data-title="라스트 씬 OST" data-sub="장편영화 · 음악 작곡 참여" onclick="togglePlay(this)">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+      </div>
+      <div class="music-info">
+        <div class="music-category">Film · 2024</div>
+        <div class="music-title">라스트 씬 OST</div>
+        <div class="music-desc">장편영화 · 음악 작곡 참여</div>
+      </div>
+      <div class="music-meta">
+        <div class="music-year">2024</div>
+        <div class="music-type">Film Score</div>
+      </div>
+    </div>
+
+    <div class="music-card" data-title="너와 나의 5분 OST" data-sub="영화 음악 · 작곡 참여" onclick="togglePlay(this)">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+      </div>
+      <div class="music-info">
+        <div class="music-category">Film · 2024</div>
+        <div class="music-title">너와 나의 5분 OST</div>
+        <div class="music-desc">영화 음악 · 작곡 참여</div>
+      </div>
+      <div class="music-meta">
+        <div class="music-year">2024</div>
+        <div class="music-type">Film Score</div>
+      </div>
+    </div>
+
+    <div class="music-card" data-title="LArirang OST" data-sub="영화 음악 · 작곡 참여" onclick="togglePlay(this)">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+      </div>
+      <div class="music-info">
+        <div class="music-category">Film</div>
+        <div class="music-title">LArirang OST</div>
+        <div class="music-desc">영화 음악 · 작곡 참여</div>
+      </div>
+      <div class="music-meta">
+        <div class="music-year"></div>
+        <div class="music-type">Film Score</div>
+      </div>
+    </div>
+
+    <div class="music-card" data-title="Evil Sea OST" data-sub="영화 음악 · 작곡 참여" onclick="togglePlay(this)">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+      </div>
+      <div class="music-info">
+        <div class="music-category">Film</div>
+        <div class="music-title">Evil Sea OST</div>
+        <div class="music-desc">영화 음악 · 작곡 참여</div>
+      </div>
+      <div class="music-meta">
+        <div class="music-year"></div>
+        <div class="music-type">Film Score</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── 피아노 연주 · 편곡 활동 ── -->
+  <div style="margin-bottom: 12px;">
+    <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);">Piano · Arrangement · Solo</span>
+  </div>
+  <div class="music-grid">
+
+    <div class="music-card" data-title="Call-Up" data-sub="개인 싱글앨범 · 작곡, 편곡, 연주, 프로듀싱" onclick="togglePlay(this)" style="border-color: var(--accent-subtle); background: linear-gradient(135deg, var(--surface) 0%, var(--accent-subtle) 100%);">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+      </div>
+      <div class="music-info">
+        <div class="music-category">Solo Album</div>
+        <div class="music-title">Call-Up</div>
+        <div class="music-desc">최윤정 개인 싱글앨범 · 작곡, 편곡, 연주, 프로듀싱</div>
+      </div>
+      <div class="music-meta">
+        <div class="music-year"></div>
+        <div class="music-type">Single Album</div>
+      </div>
+    </div>
+
+    <div class="music-card" data-title="눈빛" data-sub="싱어송라이터 미래 · 편곡 & 건반 연주" onclick="togglePlay(this)">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+      </div>
+      <div class="music-info">
+        <div class="music-category">Arrangement</div>
+        <div class="music-title">눈빛</div>
+        <div class="music-desc">싱어송라이터 '미래' 싱글 · 편곡 & 건반 연주</div>
+      </div>
+      <div class="music-meta">
+        <div class="music-year"></div>
+        <div class="music-type">Single</div>
+      </div>
+    </div>
+
+    <div class="music-card" data-title="E.O.R" data-sub="이동호 EP · 편곡 & 세션" onclick="togglePlay(this)">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+      </div>
+      <div class="music-info">
+        <div class="music-category">EP</div>
+        <div class="music-title">E.O.R</div>
+        <div class="music-desc">이동호 EP · 편곡 및 세션 참여</div>
+      </div>
+      <div class="music-meta">
+        <div class="music-year"></div>
+        <div class="music-type">EP Album</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FILMOGRAPHY -->
+<section id="filmography" style="background: var(--warm); max-width: 100%; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-header">
+      <div class="section-label">Filmography</div>
+      <div class="section-title">영상음악 작곡 참여</div>
+    </div>
+    <div class="film-grid">
+      <div class="film-card" style="border-color: var(--accent-subtle); background: linear-gradient(135deg, var(--surface) 0%, var(--accent-subtle) 100%);">
+        <div class="film-type">단편영화 · 2025 · 음악감독</div>
+        <div class="film-name">금순</div>
+        <div class="film-detail">단편영화 · 음악감독</div>
+      </div>
+      <div class="film-card">
+        <div class="film-type">영화 · 2024</div>
+        <div class="film-name">라스트 씬</div>
+        <div class="film-detail">장편영화 · 음악 작곡 참여</div>
+      </div>
+      <div class="film-card">
+        <div class="film-type">영화 · 2024</div>
+        <div class="film-name">너와 나의 5분</div>
+        <div class="film-detail">영화 음악 작곡 참여</div>
+      </div>
+      <div class="film-card">
+        <div class="film-type">영화</div>
+        <div class="film-name">LArirang</div>
+        <div class="film-detail">영화 음악 작곡 참여</div>
+      </div>
+      <div class="film-card">
+        <div class="film-type">영화</div>
+        <div class="film-name">Evil Sea</div>
+        <div class="film-detail">영화 음악 작곡 참여</div>
+      </div>
+      <div class="film-card">
+        <div class="film-type">드라마 · 2025</div>
+        <div class="film-name">비밀사이</div>
+        <div class="film-detail">왓챠 / 후지TV · 드라마 음악 작곡</div>
+      </div>
+      <div class="film-card">
+        <div class="film-type">드라마 · 2025</div>
+        <div class="film-name">맹감독의 악플러</div>
+        <div class="film-detail">MBC · 드라마 음악 작곡</div>
+      </div>
+      <div class="film-card">
+        <div class="film-type">국제 영화제</div>
+        <div class="film-name">LEAFF 런던동아시아영화제</div>
+        <div class="film-detail">오르간 편곡 참여</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <div class="section-label">About</div>
+    <div class="section-title">최윤정</div>
+  </div>
+  <div class="about-content">
+    <div class="about-text">
+      <p>
+        호원대학교 실용음악과에서 재즈피아노를 전공하고,
+        연세대학교 영상음악원을 수료하며 영상음악 작곡과 편곡 분야에서
+        실무 경험을 쌓아온 음악인입니다.
+      </p>
+      <p>
+        20년 이상의 건반 연주 경력을 기반으로
+        재즈 클럽, 콘서트, 방송 공연 등 다양한 무대에서 활동해왔으며,
+        영화와 드라마 작곡 참여를 통해 영상의 서사와 감정 흐름에 맞는
+        음악을 설계하고 구현하는 역량을 갖추고 있습니다.
+      </p>
+      <p>
+        작곡, 편곡, MIDI 프로그래밍, 세션 연주, 음악 교육까지
+        음악 제작의 전 과정을 아우르는 실무 역량을 보유하고 있습니다.
+      </p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Years of Performance</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">6</div>
+        <div class="stat-label">Film & Drama Credits</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Album Releases</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">7+</div>
+        <div class="stat-label">Students Admitted</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-header">
+    <div class="section-label">Contact</div>
+    <div class="section-title">함께 작업하기</div>
+  </div>
+  <p class="contact-desc">
+    영상음악 작곡, 편곡, 세션 연주, 음악 교육 등<br>
+    협업 및 문의는 아래 이메일로 연락 부탁드립니다.
+  </p>
+  <a href="mailto:your-email@example.com" class="contact-email">your-email@example.com</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 Choi Yun Jeong. All rights reserved.
+</footer>
+
+<!-- AUDIO PLAYER BAR -->
+<div class="audio-player-bar" id="playerBar">
+  <div class="player-info">
+    <div class="player-title" id="playerTitle">—</div>
+    <div class="player-sub" id="playerSub">—</div>
+  </div>
+  <div class="player-controls">
+    <button class="player-btn" onclick="toggleCurrentPlay()">
+      <svg viewBox="0 0 24 24" id="playerIcon"><polygon points="6,3 20,12 6,21"/></svg>
+    </button>
+  </div>
+  <div class="progress-bar" onclick="seekProgress(event)">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <div class="player-time" id="playerTime">0:00</div>
+  <button class="player-close" onclick="closePlayer()">×</button>
+</div>
+
+<script>
+function toggleExpand(el) {
+  el.classList.toggle('expanded');
+}
+
+let currentCard = null;
+let isPlaying = false;
+let progressInterval = null;
+let progress = 0;
+
+function togglePlay(card) {
+  const bar = document.getElementById('playerBar');
+  const title = card.dataset.title;
+  const sub = card.dataset.sub;
+
+  if (currentCard === card && isPlaying) {
+    pausePlay();
+    return;
+  }
+
+  if (currentCard && currentCard !== card) {
+    currentCard.classList.remove('playing');
+    clearInterval(progressInterval);
+    progress = 0;
+  }
+
+  currentCard = card;
+  isPlaying = true;
+  card.classList.add('playing');
+  bar.classList.add('visible');
+
+  document.getElementById('playerTitle').textContent = title;
+  document.getElementById('playerSub').textContent = sub;
+  document.getElementById('playerIcon').innerHTML = '<rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/>';
+
+  // Simulate playback progress
+  clearInterval(progressInterval);
+  progressInterval = setInterval(() => {
+    progress += 0.5;
+    if (progress > 100) progress = 0;
+    document.getElementById('progressFill').style.width = progress + '%';
+    const seconds = Math.floor(progress * 2.4);
+    const min = Math.floor(seconds / 60);
+    const sec = seconds % 60;
+    document.getElementById('playerTime').textContent = min + ':' + (sec < 10 ? '0' : '') + sec;
+  }, 500);
+}
+
+function pausePlay() {
+  isPlaying = false;
+  if (currentCard) currentCard.classList.remove('playing');
+  clearInterval(progressInterval);
+  document.getElementById('playerIcon').innerHTML = '<polygon points="6,3 20,12 6,21"/>';
+}
+
+function toggleCurrentPlay() {
+  if (isPlaying) {
+    pausePlay();
+  } else if (currentCard) {
+    isPlaying = true;
+    currentCard.classList.add('playing');
+    document.getElementById('playerIcon').innerHTML = '<rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/>';
+    progressInterval = setInterval(() => {
+      progress += 0.5;
+      if (progress > 100) progress = 0;
+      document.getElementById('progressFill').style.width = progress + '%';
+      const seconds = Math.floor(progress * 2.4);
+      const min = Math.floor(seconds / 60);
+      const sec = seconds % 60;
+      document.getElementById('playerTime').textContent = min + ':' + (sec < 10 ? '0' : '') + sec;
+    }, 500);
+  }
+}
+
+function seekProgress(e) {
+  const rect = e.currentTarget.getBoundingClientRect();
+  progress = ((e.clientX - rect.left) / rect.width) * 100;
+  document.getElementById('progressFill').style.width = progress + '%';
+}
+
+function closePlayer() {
+  pausePlay();
+  progress = 0;
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('playerTime').textContent = '0:00';
+  document.getElementById('playerBar').classList.remove('visible');
+  if (currentCard) currentCard.classList.remove('playing');
+  currentCard = null;
+}
+
+// Smooth reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.music-card, .film-card, .stat-card').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = `all 0.5s ease ${i * 0.05}s`;
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>

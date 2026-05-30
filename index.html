@@ -514,7 +514,7 @@ footer {
     </div>
 
     <!-- 라스트 씬 (1곡, 클릭 시 바로 재생) -->
-    <div class="music-card" style="cursor:default;">
+    <div class="music-card" onclick="toggleAudio(this)" style="cursor:pointer;">
       <div class="play-btn">
         <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
       </div>
@@ -526,11 +526,9 @@ footer {
       <div class="music-meta">
         <div class="music-year">2024</div>
         <div class="music-type">Film Score</div>
-       </div>
+      </div>
       <audio preload="none"><source src="last.mp3" type="audio/mpeg"></audio>
     </div>
-    </div>
-
   </div>
 
   <!-- ── Piano · Arrangement · Solo ── -->
@@ -612,6 +610,11 @@ footer {
         <div class="film-type">드라마 · 2025</div>
         <div class="film-name">맹감독의 악플러</div>
         <div class="film-detail">MBC · 드라마 음악 작곡</div>
+      </div>
+       <div class="film-card">
+        <div class="film-type">영화 · 2024</div>
+        <div class="film-name">불쑥</div>
+        <div class="film-detail">단편영화 · 음악 작곡 참여</div>
       </div>
     </div>
   </div>

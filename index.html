@@ -553,22 +553,22 @@ footer {
       <audio preload="none"><source src="callup.mp3" type="audio/mpeg"></audio>
     </div>
 
-    <!-- 눈빛 (음원 없음) -->
-    <div class="music-card" style="cursor:default;">
+    <!-- 눈빛 (1곡, 클릭 시 바로 재생) -->
+    <div class="music-card" onclick="toggleAudio(this)" style="cursor:pointer; border-color: var(--accent-subtle); background: linear-gradient(135deg, var(--surface) 0%, var(--accent-subtle) 100%);">
       <div class="play-btn">
         <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
       </div>
       <div class="music-info">
-        <div class="music-category">Arrangement</div>
+        <div class="music-category">Play · Arrangment</div>
         <div class="music-title">눈빛</div>
-        <div class="music-desc">싱어송라이터 '미래' 싱글 · 편곡 & 건반 연주</div>
+        <div class="music-desc">싱어송라이터'미래' · 편곡, 연주</div>
       </div>
       <div class="music-meta">
         <div class="music-year"></div>
-        <div class="music-type">Single</div>
+        <div class="music-type">Single Album</div>
       </div>
+      <audio preload="none"><source src="eye.mp3" type="audio/mpeg"></audio>
     </div>
-
   </div>
 </section>
 
